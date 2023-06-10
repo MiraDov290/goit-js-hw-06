@@ -4,8 +4,10 @@
 
 
 
-const inputName = document.querySelector('#name-input');
-const outputName = document.querySelector('#name-output');
+
+
+const inputRef = document.querySelector('#name-input');
+const nameRef = document.querySelector('#name-output');
 
 const getInputValue = ({ currentTarget }) => {
   if (currentTarget.value.trim() !== '') {
@@ -15,4 +17,4 @@ const getInputValue = ({ currentTarget }) => {
   }
 };
 
-inputName.addEventListener('input', getInputValue);
+inputRef.addEventListener('input', getInputValue);

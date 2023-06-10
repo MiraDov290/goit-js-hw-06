@@ -25,34 +25,34 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-const controls = document.querySelector('controls');
-const inputNumberEl = document.querySelector('[type="number"]');
-const createBtnEl = document.querySelector('button[data-create]');
-const destroyBtnEl = document.querySelector('button[data-destroy]');
-const divBoxesEl = document.getElementById('boxes');
-divBoxesEl.style.display = 'flex';
-divBoxesEl.style.flexWrap = 'wrap';
-divBoxesEl.style.alignItems = 'center';
-divBoxesEl.style.marginTop = '30px';
- 
+const refs = {
+  amountEl: document.querySelector('#controls input'),
+  createEl: document.querySelector('button[data-create]'),
+  destroyEl: document.querySelector('button[data-destroy]'),
+  boxesEl: document.querySelector('#boxes')
+}
 
-createBtnEl.addEventListener('click', () => {
-  //console.log(inputNumberEl.value);
-  if (
-    Number(inputNumberEl.value.trim()) > Number(inputNumberEl.max) ||
-    Number(inputNumberEl.value.trim()) < Number(inputNumberEl.min)
-  ) {
-    alert('Please enter number from 1 to 100');
-  } else {
-    createBoxes(inputNumberEl.value.trim());
+function createBoxes(amount) {
+  for(var i = 0; i < amount; i++) {
+    var elem = document.createElement('div');
+    
+    elem.style.width = 30 + (10 * i)+'px';
+    elem.style.height = 30+'px';
+    elem.style.backgroundColor = getRandomHexColor();
+    
+    refs.boxesEl.append(elem);
   }
-  inputNumberEl.value = '';
+}
+
+refs.createEl.addEventListener('click', function() {
+  var amount = refs.amountEl.value;
+  if(amount > 0) {
+    createBoxes(amount);
+  }
 });
 
-destroyBtnEl.addEventListener('click', destroyBoxes);
+refs.destroyEl.addEventListener('click', function() {
+  refs.boxesEl.innerHTML = '';
+});
 
-function destroyBoxes() {
-  inputNumberEl.value = '';
-  divBoxesEl.innerHTML = '';
-}
-  
+
