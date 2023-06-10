@@ -7,7 +7,7 @@
 
 
 const inputRef = document.getElementById('validation-input');
-inputRef.addEventListener('blur', blurBorderColor);
+inputRef.addEventListener('blur', onBlurBorderColor);
 
 function onBlurBorderColor(event) {
   const inputDataLength = Number(inputRef.dataset.length);

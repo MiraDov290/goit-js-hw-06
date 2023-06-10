@@ -34,9 +34,10 @@ divBoxesEl.style.display = 'flex';
 divBoxesEl.style.flexWrap = 'wrap';
 divBoxesEl.style.alignItems = 'center';
 divBoxesEl.style.marginTop = '30px';
+ 
 
 createBtnEl.addEventListener('click', () => {
-  
+  //console.log(inputNumberEl.value);
   if (
     Number(inputNumberEl.value.trim()) > Number(inputNumberEl.max) ||
     Number(inputNumberEl.value.trim()) < Number(inputNumberEl.min)
@@ -54,3 +55,4 @@ function destroyBoxes() {
   inputNumberEl.value = '';
   divBoxesEl.innerHTML = '';
 }
+  
